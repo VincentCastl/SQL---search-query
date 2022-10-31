@@ -1,0 +1,75 @@
+/*+/// {
+	depend:{
+		replace:[
+			{name:"///"},
+			{name:"///"},
+			{name:"///"},
+			{name:"///"},
+			{name:"///"}
+		]
+	}
+}*/
+
+with del as (
+SELECT
+	///
+	, ///
+	, ///
+	, ///
+	, ///
+	, ///
+	, ///
+	, ///
+FROM tableDEL
+where /// ='///'
+and /// between '2021-07-11 00:00:00' and '2021-12-30 23:00:00'
+)
+, con as (
+SELECT
+	///
+	, ///
+	, ///
+	, ///
+	, ///
+	, ///
+FROM tableCON
+where ///='///'
+and /// in ('///')
+)
+, pod as (
+select
+	/// as ///, ///
+from tablePOD
+where ///='///'
+)
+, bin AS (
+SELECT
+	///
+	,max(end_date_utc) as last_count_date
+FROM tableBIN
+where ///='///'
+and end_date_utc>current_date-300
+Group by 1
+)
+, rau AS (
+Select
+	///
+	,///
+	,///
+from tableRAU
+where /// = '///' 
+and /// = '///' 
+and /// >= - 500
+)
+
+select
+	pod.///, bin./// = null, datediff(d, bin.///, ///)= NULL
+ 	from pod
+ 	left join bin
+    on pod.///=bin.///
+
+LEFT JOIN rau
+on pod.///=rau.///
+where bin./// is null
+and /// = '///'
+and /// = '///' 
