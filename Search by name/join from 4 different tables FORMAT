@@ -1,0 +1,39 @@
+select distinct
+dbi.number
+,dbi. productID
+, gl.name
+, dbi.quantity quantity
+, dbi.isbn sellerCode
+, gl.asin asin
+, dbi.owner
+from table1 dbi    
+    
+    
+    join(SELECT 
+    d.ASIN
+    , d.item_name name
+    , d.parent_asin
+    , d.parent_asin_name
+    , sku.secondaryASIN
+    from table2 d
+
+        Join(select
+        o.fcsku third_ASIN
+        , o.asin ASIN
+        FROM table3 o 
+        WHERE region_id = 2
+        ) sku
+        on d.asin = sku.asin
+        /* or d.parent_asin = sku.ASIN */
+    
+    where zone = 3
+    and region = 2
+    and is_deleted = 'N'
+    ) gl
+    on dbi.sellerCode = gl.thirdASIN
+    
+where region = 2
+and location = 'Romania'
+and date = current_date-2
+and owner = 'District'
+and gl.name like ('%Paganini%')
